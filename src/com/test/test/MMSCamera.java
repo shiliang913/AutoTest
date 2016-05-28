@@ -26,10 +26,10 @@ public class MMSCamera extends Operation {
 				sleep(3000);
 				click("New message");
 				sleep(2000);
-				UiObject attachment = getObjByID("com.android.mms:id/add_attachment_first");
-				UiObject capture = getObjByText("Capture video");
-				UiObject cancel = getObjByID("com.android.camera2:id/cancel_button");
-				UiObject shutter = getObjByID("com.android.camera2:id/shutter_button");
+				UiObject attachment = findViewById("com.android.mms:id/add_attachment_first");
+				UiObject capture = findViewByText("Capture video");
+				UiObject cancel = findViewById("com.android.camera2:id/cancel_button");
+				UiObject shutter = findViewById("com.android.camera2:id/shutter_button");
 //				UiObject switcher = getObjByResourceId("com.android.camera2:id/camera_toggle_button");
 //				UiObject menu = getObjByResourceId("com.android.camera2:id/three_dots");
 				while(true){

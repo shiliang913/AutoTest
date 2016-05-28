@@ -34,39 +34,39 @@ public class Camera extends Operation {
 			UiObject shutter = null;
 			UiObject switcher = null;
 //*********************************Shutter Switcher Menu***********************************************************
-			UiObject menu = getObjByID("com.android.camera2:id/mode_options_toggle");		//menu button
+			UiObject menu = findViewById("com.android.camera2:id/mode_options_toggle");		//menu button
 			if(menu.exists()){
 				isMenu = true;
 				click(menu);
 				sleep(1000);
 			}
 			if(cameraPkg.equals("com.android.camera2")){											//com.android.camera2
-				if(getObjByID("com.android.camera2:id/shutter_button_photo").exists())
-					shutter = getObjByID("com.android.camera2:id/shutter_button_photo");
-				if(getObjByID("com.android.camera2:id/mThumbnailLayout").exists())		
-					shutter = getObjByID("com.android.camera2:id/mThumbnailLayout");
-				if(getObjByID("com.android.camera2:id/shutter_button").exists())
-					shutter = getObjByID("com.android.camera2:id/shutter_button");
-				if(getObjByID("com.android.camera2:id/onscreen_camera_picker").exists())
-					switcher = getObjByID("com.android.camera2:id/onscreen_camera_picker");
-				if(getObjByID("com.android.camera2:id/camera_toggle_button").exists())
-					switcher = getObjByID("com.android.camera2:id/camera_toggle_button");
+				if(findViewById("com.android.camera2:id/shutter_button_photo").exists())
+					shutter = findViewById("com.android.camera2:id/shutter_button_photo");
+				if(findViewById("com.android.camera2:id/mThumbnailLayout").exists())		
+					shutter = findViewById("com.android.camera2:id/mThumbnailLayout");
+				if(findViewById("com.android.camera2:id/shutter_button").exists())
+					shutter = findViewById("com.android.camera2:id/shutter_button");
+				if(findViewById("com.android.camera2:id/onscreen_camera_picker").exists())
+					switcher = findViewById("com.android.camera2:id/onscreen_camera_picker");
+				if(findViewById("com.android.camera2:id/camera_toggle_button").exists())
+					switcher = findViewById("com.android.camera2:id/camera_toggle_button");
 			}
 			if(cameraPkg.equals("com.tct.camera")){													//com.tct.camera
-				if(getObjByID("com.tct.camera:id/shutter_button_photo").exists())
-					shutter = getObjByID("com.tct.camera:id/shutter_button_photo");
-				if(getObjByID("com.tct.camera:id/shutter_button").exists())
-					shutter = getObjByID("com.tct.camera:id/shutter_button");
-				if(getObjByID("com.tct.camera:id/onscreen_camera_picker").exists())
-					switcher = getObjByID("com.tct.camera:id/onscreen_camera_picker");
-				if(getObjByID("com.tct.camera:id/camera_toggle_button").exists())
-					switcher = getObjByID("com.tct.camera:id/camera_toggle_button");
+				if(findViewById("com.tct.camera:id/shutter_button_photo").exists())
+					shutter = findViewById("com.tct.camera:id/shutter_button_photo");
+				if(findViewById("com.tct.camera:id/shutter_button").exists())
+					shutter = findViewById("com.tct.camera:id/shutter_button");
+				if(findViewById("com.tct.camera:id/onscreen_camera_picker").exists())
+					switcher = findViewById("com.tct.camera:id/onscreen_camera_picker");
+				if(findViewById("com.tct.camera:id/camera_toggle_button").exists())
+					switcher = findViewById("com.tct.camera:id/camera_toggle_button");
 			}
 			if(cameraPkg.equals("org.codeaurora.snapcam")){											//org.codeaurora.snapcam
-				if(getObjByID("org.codeaurora.snapcam:id/shutter_button").exists())
-					shutter = getObjByID("org.codeaurora.snapcam:id/shutter_button");
-				if(getObjByID("org.codeaurora.snapcam:id/front_back_switcher").exists())
-					switcher = getObjByID("org.codeaurora.snapcam:id/front_back_switcher");
+				if(findViewById("org.codeaurora.snapcam:id/shutter_button").exists())
+					shutter = findViewById("org.codeaurora.snapcam:id/shutter_button");
+				if(findViewById("org.codeaurora.snapcam:id/front_back_switcher").exists())
+					switcher = findViewById("org.codeaurora.snapcam:id/front_back_switcher");
 			}
 //*********************************Shutter Switcher Menu***********************************************************
 			if(shutter == null || switcher == null){

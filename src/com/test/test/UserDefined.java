@@ -66,13 +66,13 @@ public class UserDefined extends Operation {
 			sleep(1000);
 		}
 		else if("CLICKT".equals(action))
-			click(getObjByText(".*"+actions.get(++listIndex)+".*"));
+			click(findViewByText(".*"+actions.get(++listIndex)+".*"));
 		else if("CLICKID".equals(action))
-			click(getObjByID(".*"+actions.get(++listIndex)+".*"));
+			click(findViewById(".*"+actions.get(++listIndex)+".*"));
 		else if("CLICKE".equals(action))
-			clickExist(getObjByText(".*"+actions.get(++listIndex)+".*"));
+			clickExist(findViewByText(".*"+actions.get(++listIndex)+".*"));
 		else if("CLICKF".equals(action))
-			clickFound(getObjByText(".*"+actions.get(++listIndex)+".*"));
+			clickFound(findViewByText(".*"+actions.get(++listIndex)+".*"));
 		else if("SCREEN".equals(action)){
 			screenShot("/sdcard/UserDefined/"+getTime()+"_"+picCount+".png");
 			picCount++;

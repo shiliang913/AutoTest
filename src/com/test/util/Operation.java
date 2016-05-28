@@ -26,16 +26,16 @@ public class Operation extends UiAutomatorTestCase {
 
 	//换输入法打字
 	public void inputWithAndroid(String editBoxResourceId,String inputContent,String inputMethod,boolean isEnter) throws UiObjectNotFoundException{
-		UiObject editBox = getObjByID(editBoxResourceId);
+		UiObject editBox = findViewById(editBoxResourceId);
 		click(editBox);
 		UiDevice.getInstance().openNotification();
 		click("Change keyboard");
-		click(getObjByText(".*Android.*"));
+		click(findViewByText(".*Android.*"));
 		editBox.setText(inputContent);
 		sleep(2000);
 		UiDevice.getInstance().openNotification();
 		click("Change keyboard");
-		click(getObjByText(inputMethod));
+		click(findViewByText(inputMethod));
 		sleep(6000);
 		click(editBox);
 		if(isEnter){
@@ -48,7 +48,7 @@ public class Operation extends UiAutomatorTestCase {
 		UiDevice.getInstance().registerWatcher(watcherName, new UiWatcher() {
 			public boolean checkForCondition() {
 				try {
-					UiObject obj = getObjByText(text);
+					UiObject obj = findViewByText(text);
 					if(obj.exists()){
 						obj.click();
 						sleep(1000);
@@ -152,7 +152,7 @@ public class Operation extends UiAutomatorTestCase {
 		sleep(1000);
 		UiDevice.getInstance().pressRecentApps();
 		sleep(2000);
-		UiObject clearButton = getObjByID("com.android.systemui:id.*clear.*");
+		UiObject clearButton = findViewById("com.android.systemui:id.*clear.*");
 		if(clearButton.exists()){
 			clearButton.click();
 			while(!UiDevice.getInstance().getCurrentPackageName().contains("com.android.launcher")){
@@ -223,9 +223,9 @@ public class Operation extends UiAutomatorTestCase {
 
 	//退出APP
 	public void exitApp() throws IOException, UiObjectNotFoundException{
-		UiObject ok = getObjByText("OK");
-		UiObject sure = getObjByText("确定");
-		UiObject dismiss = getObjByText("Dismiss");
+		UiObject ok = findViewByText("OK");
+		UiObject sure = findViewByText("确定");
+		UiObject dismiss = findViewByText("Dismiss");
 		while(!UiDevice.getInstance().getCurrentPackageName().contains("com.android.launcher")){
 			UiDevice.getInstance().pressBack();
 			UiDevice.getInstance().pressBack();
@@ -271,22 +271,22 @@ public class Operation extends UiAutomatorTestCase {
 	}
 
 	//组件对象
-	public UiObject getObjByText(String text){
+	public UiObject findViewByText(String text){
 		return new UiObject(new UiSelector().textMatches(text));
 	}
-	public UiObject getObjByID(String resourceId){
+	public UiObject findViewById(String resourceId){
 		return new UiObject(new UiSelector().resourceIdMatches(resourceId));
 	}
-	public UiObject getObjByClass(String className){
+	public UiObject findViewByClass(String className){
 		return new UiObject(new UiSelector().classNameMatches(className));
 	}
-	public UiObject getObjByDes(String description){
+	public UiObject findViewByDes(String description){
 		return new UiObject(new UiSelector().descriptionMatches(description));
 	}
-	public UiScrollable getScrByID(String resourceId){
+	public UiScrollable findScrById(String resourceId){
 		return new UiScrollable(new UiSelector().resourceIdMatches(resourceId));
 	}
-	public UiScrollable getScrByActivity(){
+	public UiScrollable findScrByActivity(){
 		return new UiScrollable(new UiSelector().index(0));
 	}
 
@@ -296,15 +296,15 @@ public class Operation extends UiAutomatorTestCase {
 		sleep(1000);
 	}
 	public void click(String text) throws UiObjectNotFoundException{
-		getObjByText(text).click();
+		findViewByText(text).click();
 		sleep(1000);
 	}
-	public void clickID(String resourceId) throws UiObjectNotFoundException{
-		getObjByID(resourceId).click();
+	public void clickId(String resourceId) throws UiObjectNotFoundException{
+		findViewById(resourceId).click();
 		sleep(1000);
 	}
 	public void clickExist(String text) throws UiObjectNotFoundException{
-		UiObject obj = getObjByText(text);
+		UiObject obj = findViewByText(text);
 		if(obj.exists()){
 			obj.click();
 			sleep(1000);
@@ -317,9 +317,9 @@ public class Operation extends UiAutomatorTestCase {
 		}
 	}	
 	public void clickFound(String text) throws UiObjectNotFoundException{
-		UiObject obj = getObjByText(text);
+		UiObject obj = findViewByText(text);
 		if(!obj.exists()){
-			getScrByActivity().scrollIntoView(obj);
+			findScrByActivity().scrollIntoView(obj);
 			sleep(1000);
 		}
 		obj.click();
@@ -327,7 +327,7 @@ public class Operation extends UiAutomatorTestCase {
 	}
 	public void clickFound(UiObject obj) throws UiObjectNotFoundException{
 		if(!obj.exists()){
-			getScrByActivity().scrollIntoView(obj);
+			findScrByActivity().scrollIntoView(obj);
 			sleep(1000);
 		}
 		obj.click();

@@ -16,12 +16,12 @@ public class Browsing extends Operation {
 			sleep(5000);
 			clickExist("Accept & continue");
 			sleep(2000);
-			click(getObjByID("com.android.chrome:id/url_bar"));
-			clickID("com.android.chrome:id/delete_button");
+			click(findViewById("com.android.chrome:id/url_bar"));
+			clickId("com.android.chrome:id/delete_button");
 			inputWithAndroid("com.android.chrome:id/url_bar", "211.140.14.22:8480/wxgj/main.jsp", "搜狗输入法", true);
-			UiObject menu = getObjByID("com.android.chrome:id/document_menu_button");
-			UiObject cancel = getObjByID("com.android.systemui:id/recents_clearall_button");
-			UiObject refresh = getObjByID("com.android.chrome:id/button_three");
+			UiObject menu = findViewById("com.android.chrome:id/document_menu_button");
+			UiObject cancel = findViewById("com.android.systemui:id/recents_clearall_button");
+			UiObject refresh = findViewById("com.android.chrome:id/button_three");
 			for(int i=0;i<85;i++){	//85次
 				sleep(20000);
 				click(menu);

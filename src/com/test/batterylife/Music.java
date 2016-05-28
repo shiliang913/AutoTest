@@ -15,11 +15,11 @@ public class Music extends Operation {
 			wakeUpAndUnlock();
 			pressHome();
 			launchApp("com.alcatel.music5/.activities.MusicPlayerActivity");
-			click(getObjByDes("Open navigation drawer"));
+			click(findViewByDes("Open navigation drawer"));
 			click("Library");
 			sleep(3000);
-			UiScrollable playlist = getScrByID("com.alcatel.music5:id/view_pager");
-			UiObject unknow = getObjByText("<unknown>");
+			UiScrollable playlist = findScrById("com.alcatel.music5:id/view_pager");
+			UiObject unknow = findViewByText("<unknown>");
 			while(playlist.scrollIntoView(unknow)){
 				int unknowBound[] = getBound(unknow);
 				UiDevice.getInstance().click(unknowBound[2]+10,unknowBound[1]);
@@ -33,7 +33,7 @@ public class Music extends Operation {
 			Thread.sleep(1800000);	//30min
 			wakeUpAndUnlock();
 			screenShot("/sdcard/BatteryLife/Music.png");
-			UiObject pause = getObjByID("com.alcatel.music5:id/track_play_pause_image_btn");
+			UiObject pause = findViewById("com.alcatel.music5:id/track_play_pause_image_btn");
 			if(pause.isSelected())
 				click(pause);
 			else {

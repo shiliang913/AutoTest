@@ -15,14 +15,14 @@ public class Video extends Operation {
 			pressHome();
 			setWatcher("下次再说","Video");
 			launchApp("com.tencent.qqlive/.model.home.HomeActivity");
-			getObjByText("搜索").waitForExists(10000);
+			findViewByText("搜索").waitForExists(10000);
 			click("搜索");
 			sleep(3000);
 			inputWithAndroid("com.tencent.qqlive:id/edit_layout", "ljxdyj", "搜狗输入法", true);
-			getObjByText("绿箭侠第一季").waitForExists(30000);
+			findViewByText("绿箭侠第一季").waitForExists(30000);
 			click("绿箭侠第一季");
-			getObjByID("com.tencent.qqlive:id/full_screen_btn").waitForExists(20000);
-			clickID("com.tencent.qqlive:id/full_screen_btn");
+			findViewById("com.tencent.qqlive:id/full_screen_btn").waitForExists(20000);
+			clickId("com.tencent.qqlive:id/full_screen_btn");
 			Thread.sleep(1800000);	//30min
 			screenShot("/sdcard/BatteryLife/Video.png");
 			pressBack();

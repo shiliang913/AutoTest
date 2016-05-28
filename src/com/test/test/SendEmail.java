@@ -16,11 +16,11 @@ public class SendEmail extends Operation {
 	} 
 
 	public void testRun() throws UiObjectNotFoundException{
-		UiObject edit = getObjByID("com.android.email:id/compose_button");
-		UiObject send = getObjByID("com.android.email:id/send");
-		UiObject recipient = getObjByID("com.android.email:id/to");
-		UiObject editBox = getObjByID("com.android.email:id/body");
-		UiObject subject = getObjByID("com.android.email:id/subject");
+		UiObject edit = findViewById("com.android.email:id/compose_button");
+		UiObject send = findViewById("com.android.email:id/send");
+		UiObject recipient = findViewById("com.android.email:id/to");
+		UiObject editBox = findViewById("com.android.email:id/body");
+		UiObject subject = findViewById("com.android.email:id/subject");
 		for(int i=457;i<=500;i++){
 			click(edit);
 			sleep(2000);

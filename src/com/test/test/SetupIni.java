@@ -23,7 +23,7 @@ public class SetupIni extends Operation {
 			launchApp("com.android.settings");	//设置背光常亮
 			clickFound("Display");
 			click("Sleep");
-			if(getObjByText("Never").exists())
+			if(findViewByText("Never").exists())
 				click("Never");
 			else{
 				click("30 minutes");

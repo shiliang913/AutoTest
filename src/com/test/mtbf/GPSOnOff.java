@@ -16,8 +16,8 @@ public class GPSOnOff extends Operation {
 			launchApp("com.android.settings");
 			clickFound("Location");
 			sleep(1000);
-			UiObject onButton = getObjByID("com.android.settings:id/switch_widget");
-			UiObject show = getObjByID("com.google.android.gms:id/checkbox");
+			UiObject onButton = findViewById("com.android.settings:id/switch_widget");
+			UiObject show = findViewById("com.google.android.gms:id/checkbox");
 			int loop = 20;
 			if(n==0)
 				loop = 2;

@@ -14,9 +14,9 @@ public class FlightOnOff extends Operation {
 		try {
 			wakeUpAndUnlock();
 			launchApp("com.android.settings");
-			clickFound(getObjByText("More.*"));
+			clickFound(findViewByText("More.*"));
 			sleep(1000);
-			UiObject onButton = getObjByID("android:id/switchWidget");
+			UiObject onButton = findViewById("android:id/switchWidget");
 			int loop = 20;
 			if(n==0)
 				loop = 2;

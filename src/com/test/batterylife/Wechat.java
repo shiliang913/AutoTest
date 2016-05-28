@@ -18,25 +18,25 @@ public class Wechat extends Operation {
 			launchApp("com.tencent.mm/.ui.LauncherUI");
 			sleep(20000);
 			clickExist("Cancel");
-			if(getObjByText("Log In").exists()){
+			if(findViewByText("Log In").exists()){
 				click("Log In");
 				click("Region");
 				clickFound("China");
-				getObjByID("com.tencent.mm:id/aq6").setText("18681467504");
-				getObjByID("com.tencent.mm:id/df").setText("tablettest");
+				findViewById("com.tencent.mm:id/aq6").setText("18681467504");
+				findViewById("com.tencent.mm:id/df").setText("tablettest");
 				sleep(3000);
-				clickID("com.tencent.mm:id/wu");
-				if(getObjByClass("android.widget.LinearLayout").exists())
-					getObjByClass("android.widget.LinearLayout").waitUntilGone(30000);
+				clickId("com.tencent.mm:id/wu");
+				if(findViewByClass("android.widget.LinearLayout").exists())
+					findViewByClass("android.widget.LinearLayout").waitUntilGone(30000);
 				sleep(3000);
 				clickExist("No");
 			}
-			getObjByText("Chats").waitForExists(20000);
+			findViewByText("Chats").waitForExists(20000);
 			click("Contacts");
 			click("像云像风像雾又雨");
 			click("Message");
-			UiObject input = getObjByID("com.tencent.mm:id/r1");
-			UiObject send = getObjByText("Send");
+			UiObject input = findViewById("com.tencent.mm:id/r1");
+			UiObject send = findViewByText("Send");
 			for(int i=0;i<9;i++){	//9次
 				click(input);
 				input.setText("Microsoft  ");

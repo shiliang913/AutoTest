@@ -22,8 +22,8 @@ public class BTSearchSlow extends Operation {
 		sleep(3000);
 		file.mkdirs();
 		clickExist("MANU");
-		UiObject btList  = getObjByID("android:id/text1");
-		UiObject bt  = getObjByText("Bluetooth");
+		UiObject btList  = findViewById("android:id/text1");
+		UiObject bt  = findViewByText("Bluetooth");
 		int n = 1;
 		while(true){
 			click(bt);

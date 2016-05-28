@@ -29,11 +29,11 @@ public class TotalSpaceError extends Operation {
 			launchApp("com.android.settings");
 			clickFound("Storage");
 			sleep(3000);
-			UiObject Unmount = getObjByText("Unmount SD card");
-			UiObject Mount = getObjByText("Mount SD card");
-			UiObject OK = getObjByText("OK");
-			UiObject total = getObjByText("Total space").getFromParent(new UiSelector().resourceId("android:id/summary"));
-			UiScrollable scrollable = getScrByID("android:id/content");
+			UiObject Unmount = findViewByText("Unmount SD card");
+			UiObject Mount = findViewByText("Mount SD card");
+			UiObject OK = findViewByText("OK");
+			UiObject total = findViewByText("Total space").getFromParent(new UiSelector().resourceId("android:id/summary"));
+			UiScrollable scrollable = findScrById("android:id/content");
 			while(true){
 				clickFound(Unmount);
 				click(OK);

@@ -17,7 +17,7 @@ public class Weibo extends Operation {
 			setWatcher("No，thanks","Weibo2");		
 			launchApp("com.sina.weibo/.MainTabActivity");
 			sleep(10000);
-			if(getObjByText("Login").exists()){
+			if(findViewByText("Login").exists()){
 				click("Login");
 				inputWithAndroid("com.sina.weibo:id/etLoginUsername", "yyz0061@163.com", "搜狗输入法", false);
 				inputWithAndroid("com.sina.weibo:id/etPwd", "1478963250", "搜狗输入法", false);

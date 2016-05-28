@@ -15,7 +15,7 @@ public class Call extends Operation {
 				return;
 			wakeUpAndUnlock();
 			pressHome();
-			UiObject call = getObjByID("com.android.dialer:id/photo");
+			UiObject call = findViewById("com.android.dialer:id/photo");
 			System.out.println("******请给测试机拨打电话******");
 			call.waitForExists(120000);
 			sleep(5000);

@@ -14,12 +14,12 @@ public class WifiOnOff extends Operation {
 		try {
 			wakeUpAndUnlock();
 			launchApp("com.android.settings");
-			UiObject wifi = getObjByText("Wi.*Fi");
-			if(getObjByText("WLAN").exists())
-				wifi = getObjByText("WLAN");
+			UiObject wifi = findViewByText("Wi.*Fi");
+			if(findViewByText("WLAN").exists())
+				wifi = findViewByText("WLAN");
 			clickFound(wifi);
 			sleep(1000);
-			UiObject onButton = getObjByID("com.android.settings:id/switch_widget");
+			UiObject onButton = findViewById("com.android.settings:id/switch_widget");
 			int loop = 20;
 			if(n==0)
 				loop = 2;

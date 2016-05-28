@@ -35,7 +35,7 @@ public class CameraStress extends Operation {
 		launchApp("com.android.settings");	//设置背光常亮
 		clickFound("Display");
 		click("Sleep");
-		if(getObjByText("Never").exists())
+		if(findViewByText("Never").exists())
 			click("Never");
 		else{
 			click("30 minutes");
@@ -64,15 +64,15 @@ public class CameraStress extends Operation {
 	public void testRun1() throws IOException, UiObjectNotFoundException, RemoteException{
 		launchApp("com.android.camera2");
 		sleep(5000);
-		UiObject shutter = getObjByID("com.android.camera2:id/shutter_button");
+		UiObject shutter = findViewById("com.android.camera2:id/shutter_button");
 		for (int i = 0; i < 200; i++) {
 			click(shutter);
 			sleep(3000);
 		}
 		writeFile("200 Back PASS", PATH, false, true);
-		clickID("com.android.camera2:id/three_dots");
+		clickId("com.android.camera2:id/three_dots");
 		sleep(3000);
-		clickID("com.android.camera2:id/camera_toggle_button");
+		clickId("com.android.camera2:id/camera_toggle_button");
 		sleep(5000);
 		for (int i = 0; i < 200; i++) {
 			click(shutter);
@@ -88,7 +88,7 @@ public class CameraStress extends Operation {
 	public void testRun2() throws IOException, UiObjectNotFoundException, RemoteException{
 		launchApp("com.android.camera2");
 		sleep(5000);
-		UiObject shutter = getObjByID("com.android.camera2:id/shutter_button");
+		UiObject shutter = findViewById("com.android.camera2:id/shutter_button");
 		for (int i = 0; i < 30; i++) {
 			click(shutter);
 			sleep(6000);
@@ -96,9 +96,9 @@ public class CameraStress extends Operation {
 			sleep(3000);
 		}
 		writeFile("30 Back PASS", PATH, false, true);
-		clickID("com.android.camera2:id/three_dots");
+		clickId("com.android.camera2:id/three_dots");
 		sleep(3000);
-		clickID("com.android.camera2:id/camera_toggle_button");
+		clickId("com.android.camera2:id/camera_toggle_button");
 		sleep(5000);
 		for (int i = 0; i < 30; i++) {
 			click(shutter);
@@ -121,7 +121,7 @@ public class CameraStress extends Operation {
 			try {
 				launchApp("com.android.camera2");
 				sleep(5000);
-				UiObject shutter = getObjByID("com.android.camera2:id/shutter_button");
+				UiObject shutter = findViewById("com.android.camera2:id/shutter_button");
 				while (true) {
 					if(b = shutter.isEnabled()){
 						click(shutter);

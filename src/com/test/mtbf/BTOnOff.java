@@ -16,7 +16,7 @@ public class BTOnOff extends Operation {
 			launchApp("com.android.settings");
 			clickFound("Bluetooth");
 			sleep(1000);
-			UiObject onButton = getObjByID("com.android.settings:id/switch_widget");
+			UiObject onButton = findViewById("com.android.settings:id/switch_widget");
 			int loop = 20;
 			if(n==0)
 				loop = 2;
