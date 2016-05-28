@@ -11,10 +11,7 @@ public class Debug extends Operation {
 	} 
 
 	public void testRun() throws Exception{
-		while (true) {
-			pressRecentApps();
-			sleep(1000);
-		}
+		pressRecentApps();
 	}
 	
 }
