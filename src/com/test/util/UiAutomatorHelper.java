@@ -31,7 +31,21 @@ public class UiAutomatorHelper {
 	boolean isMac = false;
 
 	public static void main(String[] args) {
-
+		String android_id = "";
+		String test_class = "";
+		String jar_name = "";
+		String test_name = "";
+		for (int i = 0; i < args.length; i++) {
+			if(args[i].equals("--android_id"))
+				android_id = args[i+1];
+			if(args[i].equals("--test_class"))
+				test_class = args[i+1];
+			if(args[i].equals("--jar_name"))
+				jar_name = args[i+1];
+			if(args[i].equals("--test_name"))
+				test_name = args[i+1];
+		}
+		new UiAutomatorHelper(jar_name, test_class, test_name, android_id);
 	}
 	public UiAutomatorHelper() {
 		workspace_path = getWorkSpase();
