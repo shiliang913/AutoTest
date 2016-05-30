@@ -9,12 +9,16 @@ import java.util.ArrayList;
 public class StopTest {
 
 	public static int i, n;
+	public static String adb = "cmd /c adb";
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
+		if(System.getProperty("os.name").contains("Mac")){
+			adb = "/Users/shiliang/Downloads/sdk/platform-tools/adb";
+	}
 		ArrayList<String> devices = getDeviceID();
 		for (int i = 0; i < devices.size(); i++) {
 			try {
-				Process process = Runtime.getRuntime().exec("cmd /c adb -s " + devices.get(i) +" shell ps uiautomator");
+				Process process = Runtime.getRuntime().exec(adb + " -s " + devices.get(i) +" shell ps uiautomator");
 				InputStream inputStream = process.getInputStream();
 				InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 				BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -23,9 +27,9 @@ public class StopTest {
 					if (line.startsWith("shell")) {
 						line = line.replace("shell", "").trim();
 						int end = line.indexOf(" ");
-						String command = "adb -s " + devices.get(i) + " shell kill " + line.substring(0, end);
+						String command = adb + " -s " + devices.get(i) + " shell kill " + line.substring(0, end);
 						System.out.println(command);
-						Runtime.getRuntime().exec("cmd /c " + command);
+						Runtime.getRuntime().exec(command);
 					}
 				}
 				bufferedReader.close();
@@ -38,7 +42,7 @@ public class StopTest {
 	public static ArrayList<String> getDeviceID(){
 		ArrayList<String> ids = new ArrayList<String>();
 		try {
-			Process process = Runtime.getRuntime().exec("cmd /c adb devices");
+			Process process = Runtime.getRuntime().exec(adb + " devices");
 			InputStream inputStream = process.getInputStream();
 			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);

@@ -23,6 +23,13 @@ public class UiAutomatorHelper {
 	// 工作空间不需要配置，自动获取工作空间目录
 	private static String workspace_path;
 
+	//cmd适配
+	String cmd = "cmd /c ";
+	String android = "android";
+	String ant = "ant";
+	String adb = "adb";
+	boolean isMac = false;
+
 	public static void main(String[] args) {
 
 	}
@@ -40,6 +47,15 @@ public class UiAutomatorHelper {
 	 */
 	public UiAutomatorHelper(String jarName, String testClass, String testName,
 			String androidId) {
+
+		if(System.getProperty("os.name").contains("Mac")){
+			isMac = true;
+			cmd = "";
+			android = "/Users/shiliang/Downloads/sdk/tools/android";
+			ant = "/Users/shiliang/Downloads/ant/bin/ant";
+			adb = "/Users/shiliang/Downloads/sdk/platform-tools/adb";
+		}
+
 		System.out.println("-----------start--uiautomator--debug-------------");
 		workspace_path = getWorkSpase();
 		System.out.println("----工作空间：\t\n" + getWorkSpase());
@@ -58,7 +74,7 @@ public class UiAutomatorHelper {
 		creatBuildXml();
 		modfileBuild();
 		buildWithAnt();
-		if (System.getProperty("os.name").equals("Linux")) {
+		if (isMac) {
 			pushTestJar(workspace_path + "/bin/" + jar_name + ".jar");
 		}else{
 			pushTestJar(workspace_path + "\\bin\\" + jar_name + ".jar");
@@ -79,15 +95,19 @@ public class UiAutomatorHelper {
 			return true;
 		}
 		// 创建build.xml
-		execCmd("cmd /c android create uitest-project -n " + jar_name + " -t "
+		execCmd(cmd + android + " create uitest-project -n " + jar_name + " -t "
 				+ android_id + " -p " + workspace_path);
 		return false;
 	}
 
 	// 创建build.xml
 	public void creatBuildXml() {
-		execCmd("cmd /c android create uitest-project -n " + jar_name + " -t "
-				+ android_id + " -p " + "\""+workspace_path+ "\"");
+		if(isMac)
+			execCmd(cmd + android + " create uitest-project -n " + jar_name + " -t "
+					+ android_id + " -p " + workspace_path);
+		else
+			execCmd(cmd + android + " create uitest-project -n " + jar_name + " -t "
+					+ android_id + " -p " + "\""+workspace_path+ "\"");
 	}
 
 	// 2---修改build
@@ -127,25 +147,26 @@ public class UiAutomatorHelper {
 
 	// 3---ant 执行build
 	public void buildWithAnt() {
-		if (System.getProperty("os.name").equals("Linux")) {
-			execCmd("ant");
+		if (isMac) {
+			execCmd(ant);
 			return;
 		}
-		execCmd("cmd /c ant");
+		execCmd(cmd + ant);
 	}
 
 	// 4---push jar
 	public void pushTestJar(String localPath) {
-		localPath="\""+localPath+"\"";
+		if(!isMac)
+			localPath="\""+localPath+"\"";
 		System.out.println("----jar包路径： "+localPath);
-		String pushCmd = "adb push " + localPath + " /data/local/tmp/";
+		String pushCmd = adb + " push " + localPath + " /data/local/tmp/";
 		System.out.println("----" + pushCmd);
 		execCmd(pushCmd);
 	}
 
 	// 运行测试
 	public void runTest(String jarName, String testName) {
-		String runCmd = "adb shell uiautomator runtest ";
+		String runCmd = adb + " shell uiautomator runtest ";
 		String testCmd = jarName + ".jar " + "--nohup -c " + testName;
 		System.out.println("----runTest:  " + runCmd + testCmd);
 		execCmd(runCmd + testCmd);
