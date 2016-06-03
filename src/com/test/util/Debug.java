@@ -11,7 +11,6 @@ public class Debug extends Operation {
 	} 
 
 	public void testRun() throws Exception{
-		pressRecentApps();
 	}
 	
 }
